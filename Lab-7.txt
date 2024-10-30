@@ -1,0 +1,5 @@
+-A breadboard is a simple and useful tool for connecting a circuit. It’s really useful for beginners as you can easily experiment and test out circuits without soldering. But it’s also useful for more experienced people since you can prototype an idea, or parts of a circuit, quickly.
+-The breadboard has internal connections between its holes. Some vertical connections and some horizontal connections.
+-Normally, you use the columns on the sides to connect your power supply. And you use the rows in the middle to connect your components.
+-It’s common to use the columns on the left and right for connecting the power supply. These columns are connected vertically. So, if you connect 5 volts to the top hole of one of the side columns, you will have 5 volts in all the holes of this column.
+-Breadboards allow components to be easily inserted and removed—therefore, the word prototyping immediately comes to mind. If an engineer designs a simple module or circuit that they want to test, a breadboard provides a cheap and quick solution (designing a PCB just to test a simple circuit can be overkill and expensive).

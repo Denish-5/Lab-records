@@ -1,0 +1,46 @@
+Use of ESP32, upload code on ESP 32 to blink onboard LED
+
+Materials Needed:
+
+- ESP32 Development Board
+- USB Cable
+- Computer with Arduino IDE installed
+
+Step 1: Prepare Arduino IDE
+
+1. Install Arduino IDE on your computer.
+2. Open Arduino IDE, go to Preferences, and add the ESP32 Board Package.
+3. Install the package and restart Arduino IDE.
+
+Step 2: Connect ESP32
+
+1. Connect the ESP32 board to your computer using a USB cable.
+2. Put the ESP32 in bootloader mode: press and hold BOOT, press RESET, then release BOOT.
+
+Step 3: Upload Code to ESP32: Blink Onboard LED
+
+
+const int ledPin = 2; 
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(ledPin, HIGH); 
+  delay(1000);                
+  digitalWrite(ledPin, LOW);   
+  delay(1000);                
+}
+1. Select the ESP32 DevKitC board:
+    - Navigate to Tools > Board > ESP32 DevKitC.
+2. Choose the correct port:
+    - Navigate to Tools > Port > [COM/dev/tty].
+3. Upload the code:
+    - Click Upload or press Ctrl+U.
+
+Step 4: Verify
+
+1. The onboard LED should blink every second.
+2. Check the serial monitor for any errors.
+

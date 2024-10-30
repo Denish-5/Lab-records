@@ -1,0 +1,88 @@
+Create a Live Temperature and Humidity Dashboard with Arduino and Node-RED
+
+Easily monitor environmental conditions using an Arduino, DHT11 sensor and Node-RED.
+
+Materials Needed:
+
+- Arduino Uno R3
+- DHT11 Temperature and Humidity Sensor
+- Jumper Wires
+- Breadboard (optional)
+
+Step 1: Set Up Your Hardware
+
+1. Connect the DHT11 sensor to your Arduino:
+    - VCC to Arduino 5V
+    - Data Pin to Arduino Digital Pin 2
+    - GND to Arduino GND
+
+2. Upload the Arduino code:
+
+#include <DHT.h>
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+}
+
+void loop() {
+  float temp = dht.readTemperature();
+  float humidity = dht.readHumidity();
+  if (!isnan(temp) && !isnan(humidity)) {
+    Serial.print("Temperature: ");
+    Serial.print(temp);
+    Serial.print(", Humidity: ");
+    Serial.println(humidity);
+  }
+  delay(2000);
+}
+
+
+Step 2: Install Node-RED and Dashboard
+
+1. Install Node-RED globally:
+
+sudo npm install -g --unsafe-perm node-red
+
+
+1. Install Node-RED Dashboard:
+
+npm install node-red-dashboard
+
+
+1. Start Node-RED:
+
+node-red
+
+
+Open http://localhost:1880 in your browser.
+
+Step 3: Create Your Node-RED Flow
+
+1. Add a Serial In node:
+    - Select your Arduino's port (e.g., COM3).
+    - Set Baud Rate to 9600.
+
+2. Parse data with a Function node:
+
+let data = msg.payload.split(',');
+let temp = parseFloat(data[0].split(': ')[1]);
+let humidity = parseFloat(data[1].split(': ')[1]);
+return [{ payload: temp }, { payload: humidity }];
+
+
+1. Add Gauge nodes:
+    - Temperature Gauge: Label="Temperature", Units="°C", Range=0-50.
+    - Humidity Gauge: Label="Humidity", Units="%", Range=0-100.
+
+Step 4: View Your Live Dashboard
+
+1. Click Deploy.
+2. Open http://localhost:1880/ui to see real-time temperature and humidity gauges.
+
+Conclusion
+
+Congratulations! You've created a web-based dashboard to monitor temperature and humidity using Arduino and Node-RED.
